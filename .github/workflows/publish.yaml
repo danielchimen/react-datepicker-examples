@@ -1,4 +1,4 @@
-name: Publish to GitHub Pages
+name: Publish
 
 on:
   push:
@@ -6,27 +6,24 @@ on:
       - main
 
 jobs:
-  publish:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version 7
+        uses: actions/checkout@v2
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          node-version: 16.x
-          cache: 'pnpm'
+          node-version: 16
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: NODE_ENV=production pnpm build
+        run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
