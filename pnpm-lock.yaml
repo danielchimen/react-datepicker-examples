@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@dchimen/react-datepicker': ^1.5.0
-  '@types/react': ^18.0.27
-  '@types/react-dom': ^18.0.10
+  '@dchimen/react-datepicker': ^1.5.1
+  '@types/react': ^18.0.28
+  '@types/react-dom': ^18.0.11
   '@vitejs/plugin-react': ^3.1.0
   autoprefixer: ^10.4.14
   date-fns: ^2.29.3
@@ -11,11 +11,11 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   tailwindcss: ^3.2.7
-  typescript: ^4.9.3
-  vite: ^4.1.0
+  typescript: ^4.9.5
+  vite: ^4.1.4
 
 dependencies:
-  '@dchimen/react-datepicker': 1.5.0_biqbaboplfbrettd7655fr4n2y
+  '@dchimen/react-datepicker': 1.5.1_biqbaboplfbrettd7655fr4n2y
   date-fns: 2.29.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -260,8 +260,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@dchimen/react-datepicker/1.5.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-rIxeBJbdga4Zctq0UkByhr44Duo+iJxHWzO2bE2OT7c92qftnOu0lxysvPEWuxOraLOJIRRVRAF5HyppHBVr5g==}
+  /@dchimen/react-datepicker/1.5.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-avieppZZF/Clt46Mcm/5xBrSFXDseuetG2JlKnbAfv6nONmdY+rWuBuVCtqOm3tppmjrRHFxlfkqSbDgejPz2g==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -640,7 +640,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001464
-      electron-to-chromium: 1.4.326
+      electron-to-chromium: 1.4.327
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -745,8 +745,8 @@ packages:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
     dev: true
 
-  /electron-to-chromium/1.4.326:
-    resolution: {integrity: sha512-tFNZP7VlGDp88vR7TYQ/h5svw8lzfu44PU5tfDJ+JYdcsEuWv4GpEm7hOF3c4Z/o4QQ6lNxmlGtvGaBVMRM9uQ==}
+  /electron-to-chromium/1.4.327:
+    resolution: {integrity: sha512-DIk2H4g/3ZhjgiABJjVdQvUdMlSABOsjeCm6gmUzIdKxAuFrGiJ8QXMm3i09grZdDBMC/d8MELMrdwYRC0+YHg==}
     dev: true
 
   /esbuild/0.16.17:
@@ -1135,8 +1135,8 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
-  /rollup/3.19.0:
-    resolution: {integrity: sha512-xZzJZlH9Ca6cosfdNGPwl2z7Pby8dTi9TrYLPeg6/j7aUoDOhBd706tCUFvbiBj45h/cS7z/a4gS8xd5Yg0jBw==}
+  /rollup/3.19.1:
+    resolution: {integrity: sha512-lAbrdN7neYCg/8WaoWn/ckzCtz+jr70GFfYdlf50OF7387HTg+wiuiqJRFYawwSPpqfqDNYqK7smY/ks2iAudg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -1272,7 +1272,7 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.19.0
+      rollup: 3.19.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
