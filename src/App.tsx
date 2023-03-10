@@ -139,7 +139,7 @@ function App() {
           startDate={startDate}
           endDate={endDate}
           onDateChange={(startDate, endDate) => {
-            console.log(startDate, endDate);
+            alert(JSON.stringify({ startDate: startDate.toString(), endDate: endDate?.toString() }));
           }}
         />
       </div>
