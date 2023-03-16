@@ -1,11 +1,11 @@
 {
-  "author": "Daniel Chimen",
-  "license": "MIT",
-  "name": "@dchimen/app",
+  "name": "react-datepicker-examples",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Daniel Chimen",
   "description": "A simple Vite app built in React with TailwindCSS. It's primarily used to test and demonstrate the @dchimen/react-datepicker library.",
   "type": "module",
-  "homepage": "https://danielchimen.github.io/react-datepicker-examples",
+  "homepage": "https://danielchimen.github.io/react-datepicker-examples/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,20 +14,20 @@
   },
   "dependencies": {
     "@dchimen/react-datepicker": "^1.8.3",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
+    "date-fns": "^2.29.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.2.7"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/react-syntax-highlighter": "^15.5.6",
     "@vitejs/plugin-react": "^3.1.0",
-    "date-fns": "^2.29.3",
+    "autoprefixer": "^10.4.14",
     "gh-pages": "^5.0.0",
+    "postcss": "^8.4.21",
     "react-syntax-highlighter": "^15.5.0",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   },
