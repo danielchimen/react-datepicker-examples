@@ -24,7 +24,7 @@ function App() {
 
   const [onOpen, setOnOpen] = useState('');
   const [onClose, setOnClose] = useState('');
-  const [dateChange, setDateChange] = useState<null | Date>(null);
+  const [dateSelected, setDateSelected] = useState<null | Date>(null);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -40,10 +40,10 @@ function App() {
   }, [onClose]);
 
   useEffect(() => {
-    if (!dateChange) return;
-    window.alert(`Date selected: ${dateChange.toLocaleDateString()}`);
-    setDateChange(null);
-  }, [dateChange]);
+    if (!dateSelected) return;
+    window.alert(`Date selected: ${dateSelected.toLocaleDateString()}`);
+    setDateSelected(null);
+  }, [dateSelected]);
 
   useEffect(() => {
     if (
@@ -57,9 +57,9 @@ function App() {
   return (
     <div className="container p-4 mx-auto max-w-4xl">
       <h1 className="text-2xl">Datepicker Examples</h1>
-
       <div className="mt-4 p-4 border">
-        <h2 className="text-lg">Default (no options)</h2>
+        <h2 className="text-xl">Defaults</h2>
+        <p className="mt-4">No options</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -72,19 +72,19 @@ function App() {
         <div>
           <label htmlFor="default" className="text-sm">
             Example
+            <Datepicker>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker>
-            <input
-              id="default"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* startDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Set a start date</h2>
+        <h2 className="text-xl">startDate</h2>
+        <p className="mt-4">Set an start date</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -97,21 +97,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="startdate" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker startDate={startDate}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker startDate={startDate}>
-            <input
-              id="startdate"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* endDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Set an end date</h2>
+        <h2 className="text-xl">endDate</h2>
+        <p className="mt-4">Set an end date</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -124,21 +124,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="enddate" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker endDate={endDate}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker endDate={endDate}>
-            <input
-              id="enddate"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* minDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Set a minimum date</h2>
+        <h2 className="text-xl">minDate</h2>
+        <p className="mt-4">Set a minimum date</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -151,21 +151,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="mindate" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker minDate={minDate}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker minDate={minDate}>
-            <input
-              id="mindate"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* maxDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Set a maximum date</h2>
+        <h2 className="text-xl">maxDate</h2>
+        <p className="mt-4">Set a maximum date</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -178,23 +178,23 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="maxdate" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker maxDate={maxDate}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker maxDate={maxDate}>
-            <input
-              id="maxdate"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* onOpen */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">
+        <h2 className="text-xl">onOpen</h2>
+        <p className="mt-4">
           Execute a function when the datepicker has been opened
-        </h2>
+        </p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -207,23 +207,23 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="onopen" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker onOpen={() => setOnOpen('Datepicker open')}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker onOpen={() => setOnOpen('Datepicker open')}>
-            <input
-              id="onopen"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* onClose */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">
+        <h2 className="text-xl">onClose</h2>
+        <p className="mt-4">
           Execute a function when the datepicker has been closed
-        </h2>
+        </p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -236,23 +236,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="onclose" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker onClose={() => setOnClose('Datepicker closed')}>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker onClose={() => setOnClose('Datepicker closed')}>
-            <input
-              id="onclose"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* onDateSelect */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">
-          Execute a function when a date has been selected
-        </h2>
+        <h2 className="text-xl">onDateSelect</h2>
+        <p className="mt-4">Execute a function on date selection</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -260,28 +258,63 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker onDateChange={(selectedDate) => console.log(selectedDate)}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker onDateSelect={(selectedDate) => console.log(selectedDate)}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="onclose" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker
+              onDateSelect={(selectedDate) => setDateSelected(selectedDate)}
+            >
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker
-            onDateChange={(selectedDate) => setDateChange(selectedDate)}
-          >
-            <input
-              id="onclose"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* onDateChange */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Set a title for the datepicker</h2>
+        <h2 className="text-xl">onDateChange</h2>
+        <p className="mt-4">
+          Execute a function after date/s have been changed
+        </p>
+        <div>
+          <SyntaxHighlighter
+            language="typescript"
+            showLineNumbers={true}
+            style={darkMode ? materialDark : materialLight}
+          >
+            {
+              '<Datepicker onDateChange={(startDate: Date, endDate: Date) => console.log(startDate, endDate)}>\n\t<input type="text"></input>\n</Datepicker>'
+            }
+          </SyntaxHighlighter>
+        </div>
+        <div>
+          <label className="text-sm">
+            Example
+            <Datepicker
+              startDate={startDate}
+              endDate={endDate}
+              onDateChange={(startDate, endDate) => {
+                console.log(startDate, endDate);
+              }}
+            >
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
+          </label>
+        </div>
+      </div>
+      {/* title */}
+      <div className="mt-6 p-4 border">
+        <h2 className="text-xl">title</h2>
+        <p className="mt-4">Set a title for the datepicker</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -294,21 +327,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="title" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker title="Select date">
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker title="Select date">
-            <input
-              id="title"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* showOtherMonths */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Show other months</h2>
+        <h2 className="text-xl">showOtherMonths</h2>
+        <p className="mt-4">Show other months</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -321,21 +354,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="showothermonths" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker showOtherMonths>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker showOtherMonths>
-            <input
-              id="showothermonths"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
+      {/* closeOnSelect */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Close on date selection</h2>
+        <h2 className="text-xl">closeOnSelect</h2>
+        <p className="mt-4">Close on date selection</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -348,21 +381,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="closeonselect" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker closeOnSelect>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker closeOnSelect>
-            <input
-              id="closeonselect"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
-      <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Locale with RTL support</h2>
+      {/* locale */}
+      <div id="locale" className="mt-6 p-4 border">
+        <h2 className="text-xl">locale + rtl</h2>
+        <p className="mt-4">Locale with optional rtl support</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -375,21 +408,21 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="locale" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker locale={new Intl.Locale('Fa')} rtl>
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker locale={new Intl.Locale('Fa')} rtl>
-            <input
-              id="locale"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
-
-      <div className="mt-6 p-4 border">
-        <h2 className="text-lg">Custom theme</h2>
+      {/* theme */}
+      <div id="theme" className="mt-6 p-4 border">
+        <h2 className="text-xl">theme</h2>
+        <p className="mt-4">custom theme</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -402,31 +435,31 @@ function App() {
           </SyntaxHighlighter>
         </div>
         <div>
-          <label htmlFor="theme" className="text-sm">
+          <label className="text-sm">
             Example
+            <Datepicker
+              startDate={startDate}
+              endDate={endDate}
+              theme={{
+                cell: {
+                  active:
+                    'bg-red-500 text-white dark:text-red-500 dark:bg-black',
+                  ranged: 'bg-red-300 text-white text-red-500 dark:bg-zinc-900',
+                  weekend: 'bg-red-50 dark:bg-zinc-600',
+                },
+                button: {
+                  submit: 'bg-white text-red-500 dark:bg-black',
+                  close: 'bg-white text-red-500 dark:bg-black',
+                  nav: 'bg-white text-red-500 dark:bg-black',
+                },
+              }}
+            >
+              <input
+                type="text"
+                className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
+              ></input>
+            </Datepicker>
           </label>
-          <Datepicker
-            startDate={startDate}
-            endDate={endDate}
-            theme={{
-              cell: {
-                active: 'bg-red-500 text-white dark:text-red-500 dark:bg-black',
-                ranged: 'bg-red-300 text-white text-red-500 dark:bg-zinc-900',
-                weekend: 'bg-red-50 dark:bg-zinc-600',
-              },
-              button: {
-                submit: 'bg-white text-red-500 dark:bg-black',
-                close: 'bg-white text-red-500 dark:bg-black',
-                nav: 'bg-white text-red-500 dark:bg-black',
-              },
-            }}
-          >
-            <input
-              id="theme"
-              type="text"
-              className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
-            ></input>
-          </Datepicker>
         </div>
       </div>
     </div>
