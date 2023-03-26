@@ -2,7 +2,10 @@
 import { useState, useEffect } from 'react';
 
 // Components.
-import Datepicker from '@dchimen/react-datepicker';
+import Datepicker, {
+  OnDateChange,
+  OnDateSelect,
+} from '@dchimen/react-datepicker';
 
 // Styles.
 import './App.css';
@@ -17,33 +20,27 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function App() {
-  const startDate = add(new Date(), { days: 7 });
-  const endDate = add(new Date(), { days: 14 });
-  const minDate = sub(startDate, { months: 2 });
-  const maxDate = add(startDate, { months: 2 });
-
-  const [onOpen, setOnOpen] = useState('');
-  const [onClose, setOnClose] = useState('');
-  const [dateSelected, setDateSelected] = useState<null | Date>(null);
+  const [startDate] = useState(add(new Date(), { days: 7 }));
+  const [endDate] = useState(add(new Date(), { days: 14 }));
+  const [minDate] = useState(sub(startDate, { months: 2 }));
+  const [maxDate] = useState(add(startDate, { months: 2 }));
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    if (!onOpen) return;
-    window.alert(onOpen);
-    setOnOpen('');
-  }, [onOpen]);
+  const handleOnOpen = () => {
+    console.log('handleOnOpen called');
+  };
 
-  useEffect(() => {
-    if (!onClose) return;
-    window.alert(onClose);
-    setOnClose('');
-  }, [onClose]);
+  const handleOnClose = () => {
+    console.log('handleOnClose called');
+  };
 
-  useEffect(() => {
-    if (!dateSelected) return;
-    window.alert(`Date selected: ${dateSelected.toLocaleDateString()}`);
-    setDateSelected(null);
-  }, [dateSelected]);
+  const handleOnDateSelect: OnDateSelect = (date) => {
+    console.log(date.toLocaleDateString());
+  };
+
+  const handleOnDateChange: OnDateChange = (startDate, endDate) => {
+    console.log({ startDate, endDate });
+  };
 
   useEffect(() => {
     if (
@@ -202,14 +199,14 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker onOpen={() => console.log("Datepicker open")}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker onOpen={handleOnOpen}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
         <div>
           <label className="text-sm">
             Example
-            <Datepicker onOpen={() => setOnOpen('Datepicker open')}>
+            <Datepicker onOpen={handleOnOpen}>
               <input
                 type="text"
                 className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
@@ -231,14 +228,14 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker onClose={() => console.log("Datepicker closed")}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker onClose={handleOnClose}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
         <div>
           <label className="text-sm">
             Example
-            <Datepicker onClose={() => setOnClose('Datepicker closed')}>
+            <Datepicker onClose={handleOnClose}>
               <input
                 type="text"
                 className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
@@ -258,16 +255,14 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker onDateSelect={(selectedDate) => console.log(selectedDate)}>\n\t<input type="text"></input>\n</Datepicker>'
+              'import Datepicker, {\n\tOnDateSelect,\n} from "@dchimen/react-datepicker";\n\nfunction App() {\n\tconst handleOnDateSelect: OnDateSelect = (date) => {\n\t\tconsole.log(date.toLocaleDateString());\n\t};\n\n\t<Datepicker onDateSelect={handleOnDateSelect}>\n\t\t<input type="text"></input>\n\t</Datepicker>\n}'
             }
           </SyntaxHighlighter>
         </div>
         <div>
           <label className="text-sm">
             Example
-            <Datepicker
-              onDateSelect={(selectedDate) => setDateSelected(selectedDate)}
-            >
+            <Datepicker onDateSelect={handleOnDateSelect}>
               <input
                 type="text"
                 className="block w-full border cursor-pointer select-none bg-transparent p-4 focus:border-blue-500 focus:ring-blue-500"
@@ -280,7 +275,9 @@ function App() {
       <div className="mt-6 p-4 border">
         <h2 className="text-xl">onDateChange</h2>
         <p className="mt-4">
-          Execute a function after date/s have been changed
+          Execute a function after date/s have been changed. The endDate
+          returned from the callback will be of type null If it is not passed as
+          a prop to the datepicker.
         </p>
         <div>
           <SyntaxHighlighter
@@ -289,7 +286,7 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker onDateChange={(startDate: Date, endDate: Date) => console.log(startDate, endDate)}>\n\t<input type="text"></input>\n</Datepicker>'
+              'import Datepicker, {\n\tOnDateChange,\n} from "@dchimen/react-datepicker";\n\nfunction App() {\n\tconst handleOnDateChange: OnDateChange = (startDate, endDate) => {\n\t\tconsole.log({ startDate, endDate });\n\t};\n\n\t<Datepicker onDateChange={handleOnDateSelect}>\n\t\t<input type="text"></input>\n\t</Datepicker>\n}'
             }
           </SyntaxHighlighter>
         </div>
@@ -299,9 +296,7 @@ function App() {
             <Datepicker
               startDate={startDate}
               endDate={endDate}
-              onDateChange={(startDate, endDate) => {
-                console.log(startDate, endDate);
-              }}
+              onDateChange={handleOnDateChange}
             >
               <input
                 type="text"

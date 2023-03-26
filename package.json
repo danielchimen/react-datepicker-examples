@@ -1,6 +1,6 @@
 {
   "name": "react-datepicker-examples",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "license": "MIT",
   "author": "Daniel Chimen",
   "description": "A simple Vite app built in React with TailwindCSS. It's primarily used to test and demonstrate the @dchimen/react-datepicker library.",
@@ -13,13 +13,13 @@
     "deploy": "pnpm build && gh-pages -d dist"
   },
   "dependencies": {
-    "@dchimen/react-datepicker": "^2.0.0",
+    "@dchimen/react-datepicker": "^2.0.2",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6",
     "@vitejs/plugin-react": "^3.1.0",
