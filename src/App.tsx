@@ -55,8 +55,10 @@ function App() {
     <div className="container p-4 mx-auto max-w-4xl">
       <h1 className="text-2xl">Datepicker Examples</h1>
       <div className="mt-4 p-4 border">
-        <h2 className="text-xl">Defaults</h2>
-        <p className="mt-4">No options</p>
+        <h2 className="text-xl">
+          <code>Defaults</code>
+        </h2>
+        <p className="mt-4">No options.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -80,8 +82,10 @@ function App() {
       </div>
       {/* startDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">startDate</h2>
-        <p className="mt-4">Set an start date</p>
+        <h2 className="text-xl">
+          <code>startDate</code>
+        </h2>
+        <p className="mt-4">Set a start date.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -107,8 +111,10 @@ function App() {
       </div>
       {/* endDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">endDate</h2>
-        <p className="mt-4">Set an end date</p>
+        <h2 className="text-xl">
+          <code>endDate</code>
+        </h2>
+        <p className="mt-4">Set an end date.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -134,8 +140,10 @@ function App() {
       </div>
       {/* minDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">minDate</h2>
-        <p className="mt-4">Set a minimum date</p>
+        <h2 className="text-xl">
+          <code>minDate</code>
+        </h2>
+        <p className="mt-4">Set a minimum date.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -161,8 +169,10 @@ function App() {
       </div>
       {/* maxDate */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">maxDate</h2>
-        <p className="mt-4">Set a maximum date</p>
+        <h2 className="text-xl">
+          <code>maxDate</code>
+        </h2>
+        <p className="mt-4">Set a maximum date.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -188,9 +198,11 @@ function App() {
       </div>
       {/* onOpen */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">onOpen</h2>
+        <h2 className="text-xl">
+          <code>onOpen</code>
+        </h2>
         <p className="mt-4">
-          Execute a function when the datepicker has been opened
+          Execute a function when the datepicker has been opened.
         </p>
         <div>
           <SyntaxHighlighter
@@ -217,9 +229,11 @@ function App() {
       </div>
       {/* onClose */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">onClose</h2>
+        <h2 className="text-xl">
+          <code>onClose</code>
+        </h2>
         <p className="mt-4">
-          Execute a function when the datepicker has been closed
+          Execute a function when the datepicker has been closed.
         </p>
         <div>
           <SyntaxHighlighter
@@ -246,8 +260,10 @@ function App() {
       </div>
       {/* onDateSelect */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">onDateSelect</h2>
-        <p className="mt-4">Execute a function on date selection</p>
+        <h2 className="text-xl">
+          <code>onDateSelect</code>
+        </h2>
+        <p className="mt-4">Execute a function on date selection.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -273,7 +289,9 @@ function App() {
       </div>
       {/* onDateChange */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">onDateChange</h2>
+        <h2 className="text-xl">
+          <code>onDateChange</code>
+        </h2>
         <p className="mt-4">
           Execute a function after date/s have been changed. The endDate
           returned from the callback will be of type null If it is not passed as
@@ -308,8 +326,10 @@ function App() {
       </div>
       {/* title */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">title</h2>
-        <p className="mt-4">Set a title for the datepicker</p>
+        <h2 className="text-xl">
+          <code>title</code>
+        </h2>
+        <p className="mt-4">Set a title for the datepicker.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -335,8 +355,10 @@ function App() {
       </div>
       {/* showOtherMonths */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">showOtherMonths</h2>
-        <p className="mt-4">Show other months</p>
+        <h2 className="text-xl">
+          <code>showOtherMonths</code>
+        </h2>
+        <p className="mt-4">Show other months.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -362,8 +384,10 @@ function App() {
       </div>
       {/* closeOnSelect */}
       <div className="mt-6 p-4 border">
-        <h2 className="text-xl">closeOnSelect</h2>
-        <p className="mt-4">Close on date selection</p>
+        <h2 className="text-xl">
+          <code>closeOnSelect</code>
+        </h2>
+        <p className="mt-4">Close on date selection.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -389,8 +413,10 @@ function App() {
       </div>
       {/* locale */}
       <div id="locale" className="mt-6 p-4 border">
-        <h2 className="text-xl">locale + rtl</h2>
-        <p className="mt-4">Locale with optional rtl support</p>
+        <h2 className="text-xl">
+          <code>locale</code>
+        </h2>
+        <p className="mt-4">Set a custom locale.</p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -398,7 +424,7 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker locale={new Intl.Locale("Fa")} rtl={true}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker locale={new Intl.Locale("Fa")}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
@@ -416,8 +442,12 @@ function App() {
       </div>
       {/* theme */}
       <div id="theme" className="mt-6 p-4 border">
-        <h2 className="text-xl">theme</h2>
-        <p className="mt-4">custom theme</p>
+        <h2 className="text-xl">
+          <code>theme</code>
+        </h2>
+        <p className="mt-4">
+          Set a custom theme. You can use Tailwind CSS or your own styles here.
+        </p>
         <div>
           <SyntaxHighlighter
             language="typescript"
@@ -425,7 +455,7 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker theme={{\n\tcell: {\n\t\tactive: "bg-red-500 text-white dark:text-red-500 dark:bg-black",\n\t\tranged: "bg-red-300 text-white text-red-500 dark:bg-zinc-900",\n\t\tweekend: "bg-red-50 dark:bg-zinc-600",\n\t},\n\tbutton: {\n\t\tsubmit: "bg-white text-red-500 dark:bg-black",\n\t\tclose: "bg-white text-red-500 dark:bg-black",\n\t\tnav: "bg-white text-red-500 dark:bg-black",\n\t},\n}}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker theme={{\n\tbackground: "bg-gradient-to-b from-white to-emerald-200",\n\tcell: {\n\t\tactive: "bg-emerald-600",\n\t\tranged: "bg-emerald-300",\n\t\tweekend: "transparent",\n\t},\n\tbutton: {\n\t\tsubmit: "text-emerald-600",\n\t\tclose: "text-emerald-600",\n\t\tnav: "text-emerald-600",\n\t},\n}}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
@@ -436,16 +466,16 @@ function App() {
               startDate={startDate}
               endDate={endDate}
               theme={{
+                background: 'bg-gradient-to-b from-white to-emerald-200',
                 cell: {
-                  active:
-                    'bg-red-500 text-white dark:text-red-500 dark:bg-black',
-                  ranged: 'bg-red-300 text-white text-red-500 dark:bg-zinc-900',
-                  weekend: 'bg-red-50 dark:bg-zinc-600',
+                  active: 'bg-emerald-600',
+                  ranged: 'bg-emerald-300',
+                  weekend: 'transparent',
                 },
                 button: {
-                  submit: 'bg-white text-red-500 dark:bg-black',
-                  close: 'bg-white text-red-500 dark:bg-black',
-                  nav: 'bg-white text-red-500 dark:bg-black',
+                  submit: 'text-emerald-600',
+                  close: 'text-emerald-600',
+                  nav: 'text-emerald-600',
                 },
               }}
             >
