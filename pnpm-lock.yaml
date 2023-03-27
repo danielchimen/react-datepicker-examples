@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@dchimen/react-datepicker': ^2.0.3
+  '@dchimen/react-datepicker': ^2.1.0
   '@types/react': ^18.0.29
   '@types/react-dom': ^18.0.11
   '@types/react-syntax-highlighter': ^15.5.6
@@ -18,7 +18,7 @@ specifiers:
   vite: ^4.2.1
 
 dependencies:
-  '@dchimen/react-datepicker': 2.0.3_biqbaboplfbrettd7655fr4n2y
+  '@dchimen/react-datepicker': 2.1.0_biqbaboplfbrettd7655fr4n2y
   date-fns: 2.29.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -273,8 +273,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@dchimen/react-datepicker/2.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-RpZNhUGdVxA2C3Q2yix7PiE/7bPU1fMj8Nnl9m7PGPgnFhXXqK4wJdcth/RrzpOdqzRi4fRFyJB/QRCu6TV7SA==}
+  /@dchimen/react-datepicker/2.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-qZaQAwh7omXv0xbS3M7V4468x94ol8DZqMtX0eRc9LW+jlaf7rLCLtxBeRXMPyNYhcZyoCYGwErF7K5LmPfeUw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0

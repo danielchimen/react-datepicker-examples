@@ -7,9 +7,6 @@ import Datepicker, {
   OnDateSelect,
 } from '@dchimen/react-datepicker';
 
-// Styles.
-import './App.css';
-
 // Date helpers.
 import { add, sub } from 'date-fns';
 
