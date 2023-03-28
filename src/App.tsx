@@ -1,11 +1,14 @@
 // React.
 import { useState, useEffect } from 'react';
 
-// Components.
+// Datepicker.
 import Datepicker, {
   OnDateChange,
   OnDateSelect,
 } from '@dchimen/react-datepicker';
+
+// Datepicker styles.
+import '@dchimen/react-datepicker/react-datepicker.css';
 
 // Date helpers.
 import { add, sub } from 'date-fns';
@@ -452,7 +455,7 @@ function App() {
             style={darkMode ? materialDark : materialLight}
           >
             {
-              '<Datepicker theme={{\n\tbackground: "bg-gradient-to-b from-white to-emerald-200",\n\tcell: {\n\t\tactive: "bg-emerald-600",\n\t\tranged: "bg-emerald-300",\n\t\tweekend: "transparent",\n\t},\n\tbutton: {\n\t\tsubmit: "text-emerald-600",\n\t\tclose: "text-emerald-600",\n\t\tnav: "text-emerald-600",\n\t},\n}}>\n\t<input type="text"></input>\n</Datepicker>'
+              '<Datepicker theme={{\n\tbackground: "bg-gradient-to-b from-white to-emerald-200",\n\tcell: {\n\t\tactive: "bg-emerald-600",\n\t\tranged: "bg-emerald-300",\n\t\tweekend: "bg-transparent",\n\t},\n\tbutton: {\n\t\tsubmit: "text-emerald-600",\n\t\tclose: "text-emerald-600",\n\t\tnav: "text-emerald-600",\n\t},\n}}>\n\t<input type="text"></input>\n</Datepicker>'
             }
           </SyntaxHighlighter>
         </div>
@@ -467,7 +470,7 @@ function App() {
                 cell: {
                   active: 'bg-emerald-600',
                   ranged: 'bg-emerald-300',
-                  weekend: 'transparent',
+                  weekend: 'bg-transparent',
                 },
                 button: {
                   submit: 'text-emerald-600',
