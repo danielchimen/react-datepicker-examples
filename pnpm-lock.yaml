@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@dchimen/react-datepicker':
-    specifier: ^3.0.1
-    version: 3.0.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^4.0.0
+    version: 4.0.0(react-dom@18.2.0)(react@18.2.0)
   date-fns:
     specifier: ^2.29.3
     version: 2.29.3
@@ -18,6 +18,9 @@ dependencies:
     version: 18.2.0(react@18.2.0)
 
 devDependencies:
+  '@types/node':
+    specifier: ^18.16.3
+    version: 18.16.3
   '@types/react':
     specifier: ^18.0.37
     version: 18.0.37
@@ -50,7 +53,7 @@ devDependencies:
     version: 4.9.5
   vite:
     specifier: ^4.3.1
-    version: 4.3.1
+    version: 4.3.1(@types/node@18.16.3)
 
 packages:
 
@@ -289,8 +292,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@dchimen/react-datepicker@3.0.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-d76LA3GtgS7p62uhFGDNad+Fwo+OtMK7RER5YbbSjDfwJZITFrwaLiO3hCh/Asgv+lYniQc9AM/+gyGEzMU4eQ==}
+  /@dchimen/react-datepicker@4.0.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-uRQRQDxjeUVdOFFO7BR+5RRQ+/Z6ETfF+6gyvwzqZFr7ScgJhwD+VkUWkrCGJYylaMz0tvfq2Yn/Lt7qSZFhrA==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -564,6 +567,10 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
+  /@types/node@18.16.3:
+    resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+    dev: true
+
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
@@ -607,7 +614,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.4)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.3.1
+      vite: 4.3.1(@types/node@18.16.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1790,7 +1797,7 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /vite@4.3.1:
+  /vite@4.3.1(@types/node@18.16.3):
     resolution: {integrity: sha512-EPmfPLAI79Z/RofuMvkIS0Yr091T2ReUoXQqc5ppBX/sjFRhHKiPPF/R46cTdoci/XgeQpB23diiJxq5w30vdg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -1815,6 +1822,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 18.16.3
       esbuild: 0.17.17
       postcss: 8.4.23
       rollup: 3.20.7

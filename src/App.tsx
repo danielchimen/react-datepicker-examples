@@ -15,8 +15,7 @@ import Datepicker, {
 import '@dchimen/react-datepicker/react-datepicker.css';
 
 // Date helpers.
-import { add, sub, format } from 'date-fns';
-import { enGB, faIR } from 'date-fns/locale';
+import { add, sub } from 'date-fns';
 
 // Holidays.
 import Holidays from 'date-holidays';
@@ -34,7 +33,7 @@ function App() {
   const [minDate, setMinDate] = useState<Date | null>(null);
   const [maxDate, setMaxDate] = useState<Date | null>(null);
   const [title, setTitle] = useState('');
-  const [locale, setLocale] = useState<Intl.Locale>(new Intl.Locale('en-GB'));
+  const [locale, setLocale] = useState('en-GB');
   const [showOtherMonths, setShowOtherMonths] = useState(false);
   const [showWeekNumbers, setShowWeekNumbers] = useState(false);
   const [closeOnSelect, setCloseOnSelect] = useState(false);
@@ -82,21 +81,18 @@ function App() {
     setEndLabel('Return');
   };
 
-  const getHolidays = useCallback(
-    (region?: string) => {
-      const allDays = new Holidays(region || locale.region || 'GB').getHolidays(
-        new Date().getFullYear(),
-      );
+  const getHolidays = useCallback((locale?: string) => {
+    const allDays = new Holidays(locale || 'GB').getHolidays(
+      new Date().getFullYear(),
+    );
 
-      const holidays: Label[] = allDays.map((holiday) => ({
-        date: holiday.start,
-        label: holiday.name,
-      }));
+    const holidays: Label[] = allDays.map((holiday) => ({
+      date: holiday.start,
+      label: holiday.name,
+    }));
 
-      return holidays;
-    },
-    [locale],
-  );
+    return holidays;
+  }, []);
 
   const toggleLabels = () => {
     if (labels.length) {
@@ -170,7 +166,7 @@ function App() {
   };
 
   const toggleLocale = () => {
-    const language = locale.language === 'en' ? 'en-GB' : 'fa-IR';
+    const language = locale === 'en-GB' ? 'en-GB' : 'fa-IR';
 
     if (language === 'en-GB') {
       if (title) {
@@ -212,7 +208,7 @@ function App() {
       document.documentElement.dir = '';
     }
 
-    setLocale(new Intl.Locale(language === 'en-GB' ? 'fa-IR' : 'en-GB'));
+    setLocale(language === 'en-GB' ? 'fa-IR' : 'en-GB');
   };
 
   const toggleDisabledDates = () => {
@@ -294,9 +290,14 @@ function App() {
             id="toggle-start-date"
             label={`start date ${
               startDate
-                ? `(${format(startDate, 'PP', {
-                    locale: locale.language === 'en' ? enGB : faIR,
-                  })})`
+                ? `(${startDate.toLocaleDateString(
+                    locale === 'en-GB' ? 'en-GB' : 'fa-IR',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    },
+                  )})`
                 : ''
             }`}
             onChange={toggleStartDate}
@@ -314,9 +315,14 @@ function App() {
             id="toggle-end-date"
             label={`end date ${
               endDate
-                ? `(${format(endDate, 'PP', {
-                    locale: locale.language === 'en' ? enGB : faIR,
-                  })})`
+                ? `(${endDate.toLocaleDateString(
+                    locale === 'en-GB' ? 'en-GB' : 'fa-IR',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    },
+                  )})`
                 : ''
             }`}
             onChange={toggleEndDate}
@@ -336,9 +342,14 @@ function App() {
             id="toggle-min-date"
             label={`min date ${
               minDate
-                ? `(${format(minDate, 'PP', {
-                    locale: locale.language === 'en' ? enGB : faIR,
-                  })})`
+                ? `(${minDate.toLocaleDateString(
+                    locale === 'en-GB' ? 'en-GB' : 'fa-IR',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    },
+                  )})`
                 : ''
             }`}
             onChange={toggleMinDate}
@@ -349,9 +360,14 @@ function App() {
             id="toggle-max-date"
             label={`max date ${
               maxDate
-                ? `(${format(maxDate, 'PP', {
-                    locale: locale.language === 'en' ? enGB : faIR,
-                  })})`
+                ? `(${maxDate.toLocaleDateString(
+                    locale === 'en-GB' ? 'en-GB' : 'fa-IR',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    },
+                  )})`
                 : ''
             }`}
             onChange={toggleMaxDate}
@@ -438,254 +454,258 @@ function App() {
           />
         </div>
       </div>
-      <div className="mt-4 p-4 border">
-        <h2 className="text-2xl">Documentation</h2>
-        <Codeblock
-          option="Defaults"
-          code={{
-            __html:
-              '<Datepicker>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            No options.{' '}
-            <strong>The input element of type text is required</strong>. If no
-            startDate is provided, the current date will be used.
-          </span>
-        </Codeblock>
+      {process.env.NODE_ENV !== 'development' && (
+        <div className="mt-4 p-4 border">
+          <h2 className="text-2xl">Documentation</h2>
+          <Codeblock
+            option="Defaults"
+            code={{
+              __html:
+                '<Datepicker>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              No options.{' '}
+              <strong>The input element of type text is required</strong>. If no
+              startDate is provided, the current date will be used.
+            </span>
+          </Codeblock>
 
-        {/* startDate */}
-        <Codeblock
-          option="startDate"
-          code={{
-            __html:
-              '<Datepicker startDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets a start date. If either endDate or maxDate are provided, they
-            must come after startDate.
-          </span>
-        </Codeblock>
+          {/* startDate */}
+          <Codeblock
+            option="startDate"
+            code={{
+              __html:
+                '<Datepicker startDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Sets a start date. If either endDate or maxDate are provided, they
+              must come after startDate.
+            </span>
+          </Codeblock>
 
-        {/* startLabel */}
-        <Codeblock
-          option="startLabel"
-          code={{
-            __html:
-              '<Datepicker startLabel="Depart">\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Sets a start label for the startDate.</span>
-        </Codeblock>
+          {/* startLabel */}
+          <Codeblock
+            option="startLabel"
+            code={{
+              __html:
+                '<Datepicker startLabel="Depart">\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Sets a start label for the startDate.</span>
+          </Codeblock>
 
-        {/* endDate */}
-        <Codeblock
-          option="endDate"
-          code={{
-            __html:
-              '<Datepicker endDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets an end date. If maxDate is provided it must come after endDate.
-          </span>
-        </Codeblock>
+          {/* endDate */}
+          <Codeblock
+            option="endDate"
+            code={{
+              __html:
+                '<Datepicker endDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Sets an end date. If maxDate is provided it must come after
+              endDate.
+            </span>
+          </Codeblock>
 
-        {/* endLabel */}
-        <Codeblock
-          option="endLabel"
-          code={{
-            __html:
-              '<Datepicker endLabel="Return">\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Sets an end label for the endDate.</span>
-        </Codeblock>
+          {/* endLabel */}
+          <Codeblock
+            option="endLabel"
+            code={{
+              __html:
+                '<Datepicker endLabel="Return">\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Sets an end label for the endDate.</span>
+          </Codeblock>
 
-        {/* minDate */}
-        <Codeblock
-          option="minDate"
-          code={{
-            __html:
-              '<Datepicker minDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets a minimum date. If minDate is provided it must come before
-            maxDate. By default minDate is today.
-          </span>
-        </Codeblock>
+          {/* minDate */}
+          <Codeblock
+            option="minDate"
+            code={{
+              __html:
+                '<Datepicker minDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Sets a minimum date. If minDate is provided it must come before
+              maxDate. By default minDate is today.
+            </span>
+          </Codeblock>
 
-        {/* maxDate */}
-        <Codeblock
-          option="maxDate"
-          code={{
-            __html:
-              '<Datepicker maxDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Set a maximum date. The maxDate must be in the future. By default
-            maxDate is a year from today.
-          </span>
-        </Codeblock>
+          {/* maxDate */}
+          <Codeblock
+            option="maxDate"
+            code={{
+              __html:
+                '<Datepicker maxDate={new Date()}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Set a maximum date. The maxDate must be in the future. By default
+              maxDate is a year from today.
+            </span>
+          </Codeblock>
 
-        {/* title */}
-        <Codeblock
-          option="title"
-          code={{
-            __html:
-              '<Datepicker title="Select a date">\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Sets a title for the datepicker.</span>
-        </Codeblock>
+          {/* title */}
+          <Codeblock
+            option="title"
+            code={{
+              __html:
+                '<Datepicker title="Select a date">\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Sets a title for the datepicker.</span>
+          </Codeblock>
 
-        {/* showOtherMonths */}
-        <Codeblock
-          option="showOtherMonths"
-          code={{
-            __html:
-              '<Datepicker showOtherMonths>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Shows dates from the previous and next month.</span>
-        </Codeblock>
+          {/* showOtherMonths */}
+          <Codeblock
+            option="showOtherMonths"
+            code={{
+              __html:
+                '<Datepicker showOtherMonths>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Shows dates from the previous and next month.</span>
+          </Codeblock>
 
-        {/* showWeekNumbers */}
-        <Codeblock
-          option="showWeekNumbers"
-          code={{
-            __html:
-              '<Datepicker showWeekNumbers>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Shows week numbers.</span>
-        </Codeblock>
+          {/* showWeekNumbers */}
+          <Codeblock
+            option="showWeekNumbers"
+            code={{
+              __html:
+                '<Datepicker showWeekNumbers>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Shows week numbers.</span>
+          </Codeblock>
 
-        {/* closeOnSelect */}
-        <Codeblock
-          option="closeOnSelect"
-          code={{
-            __html:
-              '<Datepicker closeOnSelect>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          Closes the datepicker when a date is selected.
-        </Codeblock>
+          {/* closeOnSelect */}
+          <Codeblock
+            option="closeOnSelect"
+            code={{
+              __html:
+                '<Datepicker closeOnSelect>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            Closes the datepicker when a date is selected.
+          </Codeblock>
 
-        {/* locale */}
-        <Codeblock
-          option="locale"
-          code={{
-            __html:
-              '<Datepicker locale={new Intl.Locale(\'fa-IR\')}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets the locale for the datepicker. By default the locale is en-GB.
-          </span>
-        </Codeblock>
+          {/* locale */}
+          <Codeblock
+            option="locale"
+            code={{
+              __html:
+                '<Datepicker locale="fa-IR">\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Set the locale for the datepicker by passing a language tag. By
+              default the locale is en-GB.
+            </span>
+          </Codeblock>
 
-        {/* disabledDates */}
-        <Codeblock
-          option="disabledDates"
-          code={{
-            __html:
-              '<Datepicker \n\tdisabledDates={[\n\t\tnew Date(), \n\t\tnew Date(),\n\t]}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>Disables dates so they cannot be selected.</span>
-        </Codeblock>
+          {/* disabledDates */}
+          <Codeblock
+            option="disabledDates"
+            code={{
+              __html:
+                '<Datepicker \n\tdisabledDates={[\n\t\tnew Date(), \n\t\tnew Date(),\n\t]}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>Disables dates so they cannot be selected.</span>
+          </Codeblock>
 
-        {/* theme */}
-        <Codeblock
-          option="theme"
-          code={{
-            __html:
-              '<Datepicker \n\ttheme={{\n\t\tbackground: "bg-emerald-50",\n\t\tcell: {\n\t\t\tactive: "bg-emerald-300",\n\t\t\tranged: "bg-emerald-200",\n\t\t\tweekend: "bg-emerald-100",\n\t\t},\n\t\tbutton: {\n\t\t\tsubmit: "text-emerald-600",\n\t\t\tclose: "text-emerald-600",\n\t\t\tnav: "text-emerald-600",\n\t\t},\n\t\tlabel: "bg-white text-emerald-600"\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets a custom theme for the datepicker. All theme properties are
-            optional. Below is an example of how TailwindCSS can be used to
-            style the datepicker.
-          </span>
-        </Codeblock>
+          {/* theme */}
+          <Codeblock
+            option="theme"
+            code={{
+              __html:
+                '<Datepicker \n\ttheme={{\n\t\tbackground: "bg-emerald-50",\n\t\tcell: {\n\t\t\tactive: "bg-emerald-300",\n\t\t\tranged: "bg-emerald-200",\n\t\t\tweekend: "bg-emerald-100",\n\t\t},\n\t\tbutton: {\n\t\t\tsubmit: "text-emerald-600",\n\t\t\tclose: "text-emerald-600",\n\t\t\tnav: "text-emerald-600",\n\t\t},\n\t\tlabel: "bg-white text-emerald-600"\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Sets a custom theme for the datepicker. All theme properties are
+              optional. Below is an example of how TailwindCSS can be used to
+              style the datepicker.
+            </span>
+          </Codeblock>
 
-        {/* labels */}
-        <Codeblock
-          option="labels"
-          code={{
-            __html:
-              '<Datepicker \n\tlabels={[\n\t\t{ date: new Date(), label: "..." }, \n\t\t{ date: new Date(), label: "..." },\n\t]}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Sets custom labels for the datepicker. This is useful for things
-            such as holidays.
-          </span>
-        </Codeblock>
+          {/* labels */}
+          <Codeblock
+            option="labels"
+            code={{
+              __html:
+                '<Datepicker \n\tlabels={[\n\t\t{ date: new Date(), label: "..." }, \n\t\t{ date: new Date(), label: "..." },\n\t]}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Sets custom labels for the datepicker. This is useful for things
+              such as holidays.
+            </span>
+          </Codeblock>
 
-        {/* onOpen */}
-        <Codeblock
-          option="onOpen"
-          code={{
-            __html:
-              '<Datepicker \n\tonOpen={() => {\n\t\tconsole.log("Datepicker opened.")\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Callback function that executes when the datepicker has opened. Do
-            not attempt to modify props passed to the datepicker in this
-            function (e.g. startDate, endDate, etc...)
-          </span>
-        </Codeblock>
+          {/* onOpen */}
+          <Codeblock
+            option="onOpen"
+            code={{
+              __html:
+                '<Datepicker \n\tonOpen={() => {\n\t\tconsole.log("Datepicker opened.")\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Callback function that executes when the datepicker has opened. Do
+              not attempt to modify props passed to the datepicker in this
+              function (e.g. startDate, endDate, etc...)
+            </span>
+          </Codeblock>
 
-        {/* onClose */}
-        <Codeblock
-          option="onClose"
-          code={{
-            __html:
-              '<Datepicker \n\tonClose={() => {\n\t\tconsole.log("Datepicker closed.")\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Callback function that executes when the datepicker has closed.
-          </span>
-        </Codeblock>
+          {/* onClose */}
+          <Codeblock
+            option="onClose"
+            code={{
+              __html:
+                '<Datepicker \n\tonClose={() => {\n\t\tconsole.log("Datepicker closed.")\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Callback function that executes when the datepicker has closed.
+            </span>
+          </Codeblock>
 
-        {/* onDateSelect */}
-        <Codeblock
-          option="onDateSelect"
-          code={{
-            __html:
-              '<Datepicker \n\tstartDate={startDate} \n\tendDate={endDate} \n\tonDateSelect={(start, end) => {\n\t\t console.log(start, end)\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Callback function that executes when a date has been selected. Do
-            not attempt to modify props passed to the datepicker in this
-            function (e.g. startDate, endDate, etc...)
-          </span>
-        </Codeblock>
+          {/* onDateSelect */}
+          <Codeblock
+            option="onDateSelect"
+            code={{
+              __html:
+                '<Datepicker \n\tstartDate={startDate} \n\tendDate={endDate} \n\tonDateSelect={(start, end) => {\n\t\t console.log(start, end)\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Callback function that executes when a date has been selected. Do
+              not attempt to modify props passed to the datepicker in this
+              function (e.g. startDate, endDate, etc...)
+            </span>
+          </Codeblock>
 
-        {/* onDateChange */}
-        <Codeblock
-          option="onDateChange"
-          code={{
-            __html:
-              '<Datepicker \n\tstartDate={startDate} \n\tendDate={endDate} \n\tonDateChange={(start, end) => {\n\t\tsetStartDate(start);\n\t\tsetEndDate(end)\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
-          }}
-        >
-          <span>
-            Callback function that executes when the dates have been changed. It
-            will execute after the datepicker has closed. This callback can be
-            used to modify props passed to the datepicker like so:
-          </span>
-        </Codeblock>
-      </div>
+          {/* onDateChange */}
+          <Codeblock
+            option="onDateChange"
+            code={{
+              __html:
+                '<Datepicker \n\tstartDate={startDate} \n\tendDate={endDate} \n\tonDateChange={(start, end) => {\n\t\tsetStartDate(start);\n\t\tsetEndDate(end)\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+            }}
+          >
+            <span>
+              Callback function that executes when the dates have been changed.
+              It will execute after the datepicker has closed. This callback can
+              be used to modify props passed to the datepicker like so:
+            </span>
+          </Codeblock>
+        </div>
+      )}
     </div>
   );
 }
