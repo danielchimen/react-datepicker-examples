@@ -157,8 +157,8 @@ function App() {
         weekend: 'bg-emerald-100',
       },
       button: {
-        submit: 'text-emerald-600',
-        close: 'text-emerald-600',
+        submit: 'p-4 text-emerald-600',
+        close: 'p-4 text-emerald-600',
         nav: 'text-emerald-600',
       },
       label: 'bg-white text-emerald-600',
@@ -623,7 +623,7 @@ function App() {
             option="theme"
             code={{
               __html:
-                '<Datepicker \n\ttheme={{\n\t\tbackground: "bg-emerald-50",\n\t\tcell: {\n\t\t\tactive: "bg-emerald-300",\n\t\t\tranged: "bg-emerald-200",\n\t\t\tweekend: "bg-emerald-100",\n\t\t},\n\t\tbutton: {\n\t\t\tsubmit: "text-emerald-600",\n\t\t\tclose: "text-emerald-600",\n\t\t\tnav: "text-emerald-600",\n\t\t},\n\t\tlabel: "bg-white text-emerald-600"\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
+                '<Datepicker \n\ttheme={{\n\t\tbackground: "bg-emerald-50",\n\t\tcell: {\n\t\t\tactive: "bg-emerald-300",\n\t\t\tranged: "bg-emerald-200",\n\t\t\tweekend: "bg-emerald-100",\n\t\t},\n\t\tbutton: {\n\t\t\tsubmit: "p-4 text-emerald-600",\n\t\t\tclose: "p-4 text-emerald-600",\n\t\t\tnav: "text-emerald-600",\n\t\t},\n\t\tlabel: "bg-white text-emerald-600"\n\t}}>\n\t<input type="text"></input>\n</Datepicker>',
             }}
           >
             <span>

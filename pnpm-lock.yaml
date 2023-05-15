@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@dchimen/react-datepicker':
-    specifier: ^4.0.0
-    version: 4.0.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^4.0.2
+    version: 4.0.2(react-dom@18.2.0)(react@18.2.0)
   date-fns:
     specifier: ^2.29.3
     version: 2.29.3
@@ -292,8 +292,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@dchimen/react-datepicker@4.0.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uRQRQDxjeUVdOFFO7BR+5RRQ+/Z6ETfF+6gyvwzqZFr7ScgJhwD+VkUWkrCGJYylaMz0tvfq2Yn/Lt7qSZFhrA==}
+  /@dchimen/react-datepicker@4.0.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-qkJRQU/FeUe0/F48sHUWGQ72uWfkjik8MgLiqf+wNRMyvZY/lpz+oNGjpvcjT/cM7/2YJIqd7j1gjLkXvmaDcw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
